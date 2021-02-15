@@ -1,0 +1,22 @@
+import Vue from 'vue';
+import App from './App.vue';
+import router from './router';
+import store from './store';
+import vuetify from './plugins/vuetify';
+import firebaseInstance from './middlware/firebase';
+
+
+Vue.config.productionTip = false;
+firebaseInstance.firebase.auth()
+  .onAuthStateChanged((user) => {
+    window.user = user;
+    new Vue({
+      router,
+      store,
+      vuetify,
+      render: (h) => h(App),
+    }).$mount('#app');
+  });
+
+
+
