@@ -1,23 +1,23 @@
 <template>
-  <div style="margin-right: 100px">
+  <div>
     <v-select
       v-model="item.type"
       :items="['title','section','subSection']"
     >
     </v-select>
-    <v-text-field v-model="item.name" label="name">
+    <v-input v-model="item.name">
 
-    </v-text-field>
-    <v-text-field v-model="title" label="title">
+    </v-input>
+    <v-input v-model="title">
 
-    </v-text-field>
-    <v-text-field v-model="section" label="section">
+    </v-input>
+    <v-input v-model="section">
 
-    </v-text-field>
-    <v-text-field v-model="subSection" label="subSection">
+    </v-input>
+    <v-input v-model="subSection">
 
-    </v-text-field>
-    <v-text-field v-model="item.content" label="content">
+    </v-input>
+    <v-text-field v-model="item.content">
 
     </v-text-field>
     <v-btn @click="save">הוספת סעיף חדש

@@ -18,9 +18,7 @@ export default {
     login() {
       var provider = new firebaseInstance.firebase.auth.GoogleAuthProvider();
       const self = this
-
       firebaseInstance.firebase.auth().signInWithPopup(provider).then(result => {
-
         var token = result.credential.accessToken;
         var user = result.user;
         console.log(user)

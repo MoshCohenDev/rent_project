@@ -10,39 +10,29 @@ function insertUser(data) {
     .collection('userDetails')
     .add(data);
 }
-
-function insertContracts(data, contract) {//for set contract
-  return firebaseInstance.firebase.firestore().collection('contracts').doc(contract)
-    .collection('sections')
-    .add(data);
-}
-
-function insertContractById(data, contract) {//for set contract
-  debugger
-  return firebaseInstance.firebase.firestore().collection('contracts').doc(contract).collection('sections').doc(data).set(
-      { children: [data] }, { merge: true });
-}
-function deleteContract(id,contract) {
-  return firebaseInstance.firebase.firestore().collection('contracts').doc(contract)
-    .collection('sections').delete(id);}
-
 async function getContract(contract) {
   const sections = [];
-  const data = await firebaseInstance.firebase.firestore()
-    .collection('contracts')
-    .doc(contract)
-    .collection('sections')
-    .get();
+  const data = await firebaseInstance.firebase.firestore().collection(`contracts/${contract}/parts/`).get()
   data.docs.forEach(section => {
-    sections.push(section.data());
+    const sec = section.data()
+    sec.sid = section.id
+    sections.push(sec);
   });
-  console.log(sections, ' this is sections ');
   return sections;
 }
 
+function insertSectionToContracts(data, contract) {
+  return firebaseInstance.firebase.firestore().doc(`contracts/${contract}/parts/${data.id}`).set(data);
+}
+
+function removeSectionById(id, contract) {
+  return firebaseInstance.firebase.firestore().collection('contracts').doc(contract)
+    .collection('sections').delete(id);
+}
+
+
+
 function uploadImage(file) {
-  console.log(file);
-  debugger
   let storageRef = firebase.storage()
     .ref();
   let mountainsRef = storageRef.child(`lease/${file.name}`);
@@ -50,7 +40,6 @@ function uploadImage(file) {
     .then(imageData => {
       return imageData.ref.getDownloadURL()
         .then(url => {
-          debugger
           return url;
         });
     });
@@ -58,9 +47,8 @@ function uploadImage(file) {
 
 export default {
   insertUser,
-  insertContracts,
+  insertSectionToContracts,
   getContract,
   uploadImage,
-  insertContractById,
-  deleteContract
+  removeSectionById
 };

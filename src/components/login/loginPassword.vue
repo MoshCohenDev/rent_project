@@ -31,7 +31,6 @@
         @click="crateLoginInPassword">SIGN UP
       </v-btn>
     </div>
-
   </div>
 </template>
 

@@ -1,0 +1,15 @@
+
+//select components:
+//1.todo delete function
+//2.todo tree view section with children
+//3.todo css select components
+
+//home components:
+//.todo card with img in home
+//.todo title and list about the app
+
+save all data about the user:
+pdf or word contract to the user = (users,contract,img/video,signature)
+download and send to the email that is login
+
+

@@ -1,5 +1,8 @@
 export default {
   sections:[],
+  sid:'',
   transContract:'',
-  imageUp:[]
+  imageUp:[],
+  userInformation: [],
+
 }

@@ -14,7 +14,7 @@
                           <v-btn class="mx-2" fab color="black" outlined>
                             <v-icon> fab fa-facebook-f</v-icon>
                           </v-btn>
-                          <v-btn @click="" class="mx-2" fab color="black" outlined>
+                              <v-btn class="mx-2" fab color="black" outlined>
                             <google-provider/>
                           </v-btn>
                           <v-btn class="mx-2" fab color="black" outlined>

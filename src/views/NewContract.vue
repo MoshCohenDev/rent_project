@@ -9,7 +9,7 @@
 
 
 <script>
-import StepperContract from '@/components/contract/stepperContract';
+import StepperContract from '@/components/stepper/stepperContract';
 
 export default {
   name: 'NewContract',
